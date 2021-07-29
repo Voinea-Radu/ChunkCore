@@ -1,0 +1,24 @@
+name: ChunkCore
+version: ${project.version}
+main: dev.lightdream.UltraPrisonCore
+depend: [Vault, WorldGuard, WorldEdit]
+softdepend:
+  - PlaceholderAPI
+  - JetsPrisonMines
+  - MVdWPlaceholderAPI
+  - Multiverse-Core
+authors: [Drawethree]
+api-version: 1.13
+load: POSTWORLD
+commands:
+  allychat:
+    description: NA
+  gang:
+    description: NA
+  fight:
+    description: NA
+  gangadmin:
+    description: NA
+  gangchat:
+    description: NA
+
