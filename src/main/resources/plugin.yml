@@ -7,7 +7,7 @@ softdepend:
   - JetsPrisonMines
   - MVdWPlaceholderAPI
   - Multiverse-Core
-authors: [Drawethree]
+authors: [Drawethree, L1ghtDream]
 api-version: 1.13
 load: POSTWORLD
 commands:

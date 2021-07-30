@@ -1,6 +1,6 @@
 package com.connorlinfoot.actionbarapi;
 
-import dev.lightdream.ultraprisoncore.UltraPrisonCore;
+import dev.lightdream.UltraPrisonCore;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
