@@ -1,17 +1,18 @@
 package dev.lightdream.gangs.command.gang;
 
+
 import dev.lightdream.gangs.config.Lang;
 import dev.lightdream.gangs.config.Settings;
 import dev.lightdream.gangs.core.BSubCommand;
 import dev.lightdream.gangs.gang.Gang;
 
-public class CmdGangNeutral extends BSubCommand {
-    public CmdGangNeutral() {
-        this.aliases.add("neutral");
-        this.aliases.add("n");
-        this.correctUsage = "/gang neutral <gang>";
-        this.permission = "gangsplus.gang.neutral";
-        this.requiredRank = Settings.getRequiredRank("neutral");
+public class CmdGangEnemy extends BSubCommand {
+    public CmdGangEnemy() {
+        this.aliases.add("enemy");
+        this.aliases.add("e");
+        this.correctUsage = "/gang enemy <gang>";
+        this.permission = "gangsplus.gang.enemy";
+        this.requiredRank = Settings.getRequiredRank("enemy");
         this.senderMustBePlayer = true;
         this.senderMustBeInGang = true;
         this.senderMustBeWithoutGang = false;
@@ -29,16 +30,16 @@ public class CmdGangNeutral extends BSubCommand {
             } else {
                 Gang var2 = this.main.getGangManager().getGang(var1);
                 if (this.gang.equals(var2)) {
-                    this.msg(Lang.MSG_GANG_NEUTRAL_OWN.toMsg());
-                } else if (!this.gang.isAlly(var2)) {
-                    this.msg(Lang.MSG_GANG_NEUTRAL_NOTALLY.toMsg().replace("%gang%", var2.getName()));
+                    this.msg(Lang.MSG_GANG_ENEMY_OWN.toMsg());
+                } else if (this.gang.isAlly(var2)) {
+                    this.msg(Lang.MSG_GANG_ENEMY_ALREADYENEMY.toMsg());
                 } else {
-                    this.gang.getAllyGangs().remove(var2);
+                    var2.getEnemyGangs().add(this.gang);
                     var2.getAllyGangs().remove(this.gang);
-                    this.main.getDataManager().removeAlliance(this.gang, var2);
-                    var2.sendMessage(Lang.MSG_GANG_NEUTRAL_NEUTRAL_INGANG.toString().replace("%gang%", this.gang.getName()));
-                    this.gang.sendMessage(Lang.MSG_GANG_NEUTRAL_NEUTRAL_INGANG.toString().replace("%gang%", var2.getName()));
-                    this.msg(Lang.MSG_GANG_NEUTRAL_NEUTRAL_NEUTRAL.toMsg().replace("%gang%", var2.getName()));
+                    this.gang.getEnemyGangs().add(var2);
+                    this.gang.getAllyGangs().remove(var2);
+                    this.msg(Lang.MSG_GANG_ENEMY.toString().replace("%gang%", this.gang.getName()));
+                    this.msg(Lang.MSG_GANG_ENEMY.toString().replace("%gang%", var2.getName()));
                 }
             }
         }

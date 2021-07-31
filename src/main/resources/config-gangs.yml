@@ -204,6 +204,7 @@ commands:
     - "&7- Online members (%onlinemembersamount%): &b%onlinemembers%"
     - "&7- Bank account: &b$%bank%"
     - "&7- Allied gangs: &b%allies%"
+    - "&7- Enemies gangs: &b%enemies%"
   #Format of /g player output
   #Placeholders: %date%, %kills%, %deaths%, %assists%, %kdr%, %gang%, %gangrank%
   #Use the {INGANG} tag to make particular line be displayed only when the player is in a gang
@@ -230,6 +231,7 @@ ranks:
     fightJoin: 1
     fightLeave: 1
     ally: 4
+    enemy: 4
     delhome: 4
     demote: 5
     deposit: 1

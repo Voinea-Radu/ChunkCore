@@ -43,6 +43,7 @@ public class CmdGang extends BCommand implements CommandExecutor {
         this.subcommands.add(new CmdGangTop());
         this.subcommands.add(new CmdGangUninvite());
         this.subcommands.add(new CmdGangWithdraw());
+        this.subcommands.add(new CmdGangEnemy());
     }
 
     public boolean onCommand(CommandSender var1, Command var2, String var3, String[] var4) {
@@ -51,7 +52,7 @@ public class CmdGang extends BCommand implements CommandExecutor {
             return true;
         } else if (var4.length < 1) {
             if (Settings.sendGangCmdUsage) {
-                var1.sendMessage(Lang.MSG_GANG_HELP_HELP.toString());
+                var1.sendMessage(Lang.MSG_GANG_HELP_HELP_1.toString());
             } else {
                 var1.sendMessage(Lang.MSG_USAGE_GANG.toMsg());
             }
@@ -64,7 +65,7 @@ public class CmdGang extends BCommand implements CommandExecutor {
             do {
                 if (!var5.hasNext()) {
                     if (Settings.sendGangCmdUsage) {
-                        var1.sendMessage(Lang.MSG_GANG_HELP_HELP.toString());
+                        var1.sendMessage(Lang.MSG_GANG_HELP_HELP_1.toString());
                     } else {
                         var1.sendMessage(Lang.MSG_USAGE_GANG.toMsg());
                     }

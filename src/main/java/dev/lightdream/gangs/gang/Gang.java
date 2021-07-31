@@ -3,6 +3,7 @@ package dev.lightdream.gangs.gang;
 import dev.lightdream.gangs.config.Settings;
 import dev.lightdream.gangs.util.StringUtils;
 import dev.lightdream.gangs.GangsPlugin;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -27,6 +28,8 @@ public class Gang {
     private Map<String, Location> homes;
     private List<Gang> allyGangs;
     private List<Gang> allyRequests;
+    @Getter
+    private List<Gang> enemyGangs;
     private boolean requiresUpdate;
 
     public Gang(int var1, String var2, long var3, boolean var5, int var6, int var7, int var8, int var9, int var10, int var11, double var12, Map<UUID, GangMemberData> var14, Set<UUID> var15, Map<String, Location> var16) {
@@ -46,6 +49,7 @@ public class Gang {
         this.homes = var16;
         this.allyGangs = new ArrayList();
         this.allyRequests = new ArrayList();
+        this.enemyGangs = new ArrayList();
         this.requiresUpdate = false;
     }
 
@@ -399,6 +403,22 @@ public class Gang {
         return var1;
     }
 
+    public String getEnemyGangsList() {
+        String var1 = "";
+        int var2 = 0;
+
+        for (Iterator var3 = this.enemyGangs.iterator(); var3.hasNext(); ++var2) {
+            Gang var4 = (Gang) var3.next();
+            if (var2 < this.enemyGangs.size() - 1) {
+                var1 = var1 + var4.getName() + ", ";
+            } else {
+                var1 = var1 + var4.getName();
+            }
+        }
+
+        return var1;
+    }
+
     public boolean isAlly(Gang var1) {
         return this.allyGangs.contains(var1);
     }
@@ -478,7 +498,7 @@ public class Gang {
     }
 
     public String formatPlaceholders(String var1) {
-        return var1.replace("%id%", String.valueOf(this.id)).replace("%name%", this.getName()).replace("%date%", Settings.formatDate(this.createdAt)).replace("%friendlyfire%", String.valueOf(this.friendlyFire)).replace("%level%", String.valueOf(this.level)).replace("%kills%", String.valueOf(this.kills)).replace("%deaths%", String.valueOf(this.deaths)).replace("%assists%", String.valueOf(this.assists)).replace("%kdr%", StringUtils.formatDoubleString(this.getKdRatio())).replace("%fightswon%", String.valueOf(this.fightsWon)).replace("%fightslost%", String.valueOf(this.fightsLost)).replace("%wlr%", StringUtils.formatDoubleString(this.getWlRatio())).replace("%bank%", StringUtils.formatDoubleString(this.bankMoney)).replace("%leader%", this.getOwnerName()).replace("%members%", this.getMembersList()).replace("%membershighlighted%", this.getMembersListWithOnlineHighlighted()).replace("%membersamount%", String.valueOf(this.getMembers().size())).replace("%onlinemembers%", this.getOnlineMembersList()).replace("%onlinemembersamount%", String.valueOf(this.getOnlineMembers().size())).replace("%allies%", this.getAllyGangsList());
+        return var1.replace("%id%", String.valueOf(this.id)).replace("%name%", this.getName()).replace("%date%", Settings.formatDate(this.createdAt)).replace("%friendlyfire%", String.valueOf(this.friendlyFire)).replace("%level%", String.valueOf(this.level)).replace("%kills%", String.valueOf(this.kills)).replace("%deaths%", String.valueOf(this.deaths)).replace("%assists%", String.valueOf(this.assists)).replace("%kdr%", StringUtils.formatDoubleString(this.getKdRatio())).replace("%fightswon%", String.valueOf(this.fightsWon)).replace("%fightslost%", String.valueOf(this.fightsLost)).replace("%wlr%", StringUtils.formatDoubleString(this.getWlRatio())).replace("%bank%", StringUtils.formatDoubleString(this.bankMoney)).replace("%leader%", this.getOwnerName()).replace("%members%", this.getMembersList()).replace("%membershighlighted%", this.getMembersListWithOnlineHighlighted()).replace("%membersamount%", String.valueOf(this.getMembers().size())).replace("%onlinemembers%", this.getOnlineMembersList()).replace("%onlinemembersamount%", String.valueOf(this.getOnlineMembers().size())).replace("%allies%", this.getAllyGangsList()).replace("%enemies%", this.getEnemyGangsList());
     }
 
     public void save() {
