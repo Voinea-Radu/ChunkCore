@@ -71,6 +71,7 @@ public class Settings {
     public static int fightsFightTimeLimit;
     public static int fightsDelayBeforeTeleport;
     public static int dataSaveInterval;
+    public static int maxEnemyGangs;
     public static double priceCreate;
     public static double fightsMinMoneyAmount;
     public static double fightsMaxMoneyAmount;
@@ -120,6 +121,7 @@ public class Settings {
         gangNameFormatUseLevelBased = config.getBoolean("gangs.gangNameFormat.useLevelBased");
         maxMembersUseLevelBased = config.getBoolean("gangs.maxMembers.useLevelBased");
         maxHomesUseLevelBased = config.getBoolean("gangs.maxHomes.useLevelBased");
+        maxEnemyGangs = config.getInt("gangs.maxEnemyGangs");
         alliancesAllowPvp = config.getBoolean("alliances.allowPvp");
         alliancesAllowFights = config.getBoolean("alliances.allowFights");
         alliancesEnableAllyChat = config.getBoolean("alliances.enableAllyChat");

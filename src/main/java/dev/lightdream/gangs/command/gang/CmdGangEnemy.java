@@ -34,12 +34,21 @@ public class CmdGangEnemy extends BSubCommand {
                 } else if (this.gang.isAlly(var2)) {
                     this.msg(Lang.MSG_GANG_ENEMY_ALREADYENEMY.toMsg());
                 } else {
-                    var2.getEnemyGangs().add(this.gang);
-                    var2.getAllyGangs().remove(this.gang);
+                    if(this.gang.getEnemyGangs().contains(var2)){
+                        gang.sendMessage(Lang.MSG_GANG_ALREADY_ENEMY.toMsg().replace("%gang%", this.gang.getName()));
+                        return;
+                    }
+                    if(this.gang.getEnemyGangs().size()>=Settings.maxEnemyGangs){
+                        gang.sendMessage(Lang.MSG_GANG_ENEMY_LIMIT.toMsg());
+                        return;
+                    }
                     this.gang.getEnemyGangs().add(var2);
                     this.gang.getAllyGangs().remove(var2);
-                    this.msg(Lang.MSG_GANG_ENEMY.toString().replace("%gang%", this.gang.getName()));
-                    this.msg(Lang.MSG_GANG_ENEMY.toString().replace("%gang%", var2.getName()));
+                    var2.getEnemyGangs().add(this.gang);
+                    var2.getAllyGangs().remove(this.gang);
+
+                    var2.sendMessage(Lang.MSG_GANG_ENEMY.toMsg().replace("%gang%", this.gang.getName()));
+                    this.msg(Lang.MSG_GANG_ENEMY.toMsg().replace("%gang%", var2.getName()));
                 }
             }
         }

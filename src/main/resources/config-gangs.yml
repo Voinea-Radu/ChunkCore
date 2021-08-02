@@ -44,6 +44,7 @@ broadcasts:
     fightStart: true
     fightEnd: true
 gangs:
+  maxEnemyGangs: 3
   #Gang name regex, don't change it unless you know how it works
   allowedNameCharacters: '[^a-zA-Z0-9\\ ]'
   #Choose if spaces are allowed in gang name

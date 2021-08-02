@@ -104,6 +104,8 @@ public enum Lang {
     MSG_GANG_ENEMY_ALREADYENEMY("This gang is already your ally."),
     MSG_GANG_ALLY_REQUESTED_BY("%gang% requested for an alliance. You can accept it with /gang ally %gang%"),
     MSG_GANG_ENEMY("You are now enemy with %gang%"),
+    MSG_GANG_ALREADY_ENEMY("You are already enemy with %gang%"),
+    MSG_GANG_ENEMY_LIMIT("You already have the maximum number of enemy gangs"),
     MSG_GANG_ALLY_REQUESTED_INGANG("Your gang sent an alliance request to %gang%."),
     MSG_GANG_ALLY_REQUESTED_REQUESTED("Alliance request sent to %gang%."),
     MSG_GANG_ALLY_ACCEPTED_BY("Your alliance request has been accepted by %gang%."),
