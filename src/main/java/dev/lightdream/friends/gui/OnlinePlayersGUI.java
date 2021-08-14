@@ -1,8 +1,8 @@
 package dev.lightdream.friends.gui;
 
+import dev.lightdream.UltraPrisonCore;
 import dev.lightdream.friends.UltraPrisonFriends;
 import dev.lightdream.utils.Item;
-import dev.lightdream.UltraPrisonCore;
 import dev.lightdream.utils.ItemStackUtils;
 import dev.lightdream.utils.Utils;
 import org.bukkit.Bukkit;
@@ -106,7 +106,10 @@ public class OnlinePlayersGUI implements GUI {
 
         for (int i = availablePositions.size() * page; i < availablePositions.size() * (page + 1); i++) {
             if (Bukkit.getOnlinePlayers().size() > i) {
-                players.add(((Player) Bukkit.getOnlinePlayers().toArray()[i]).getUniqueId());
+                Player onlinePlayer = (Player) Bukkit.getOnlinePlayers().toArray()[i];
+                if (onlinePlayer.getUniqueId() != player) {
+                    players.add(onlinePlayer.getUniqueId());
+                }
             }
         }
 
